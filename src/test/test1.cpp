@@ -13,9 +13,21 @@ void test_jason1()
   // Test within image
   cout << "im.w="<< im.w<<", im.h="<< im.h<< ", im.c=" << im.c << endl;
   cout << "im(0,1,1)="<<im(0,1,1)<<endl;
+  cout << "im(1,0,1)="<<im(1,0,1)<<endl;
   cout << "im(3,1,0)="<<im(3,1,0)<<", im(3,1,1)="<<im(3,1,1)<<", im(3,1,2)="<<im(3,1,2)<< endl;
+  cout << "for loop within test_jason()" << endl;
+  for (int cn=0;cn<im.c;cn++)
+  {
+    for (int hn=0;hn<im.h;hn++)
+    {
+      for (int wn=0;wn<im.w;wn++)
+      {
+        cout << "im("<<wn<<","<<hn<<","<<cn<<")="<<im(wn,hn,cn)<<endl;
+      }
+    }
+  }
   TEST(within_eps(0, im(0,0,0)));
-  TEST(within_eps(1, im.clamped_pixel(-1,1,1)));
+  TEST(within_eps(1, im.clamped_pixel(1,0,1)));
   TEST(within_eps(0, im.clamped_pixel(2,0,1)));
 
   // Test padding
@@ -187,8 +199,8 @@ void run_tests()
   test_rgb_to_hsv();
   test_hsv_to_rgb();
   test_rgb2lch2rgb();
-  */
   test_rgb2lch2rgb();
+
   test_hsv_to_rgb2();
   test_hsv_to_rgb3();
   test_hsv_to_rgb();
@@ -199,6 +211,10 @@ void run_tests()
   test_copy();
   test_set_pixel();
   test_jason1();
+  */
+  test_grayscale();
+  test_jason1();
+  test_get_pixel();
   printf("%d tests, %d passed, %d failed\n", tests_total, tests_total-tests_fail, tests_fail);
   }
 

@@ -31,7 +31,10 @@ int pixel_address(const Image& im, int x, int y, int ch)
 
   return add;
   */
-  return (x + (y*im.w) + (ch*im.w*im.h));
+  // return (x + (y*im.w) + (ch*im.w*im.h));
+  int add = (x + (y*im.w) + (ch*im.w*im.h));
+  // cout << add << endl;
+  return add;
   }
 
 // HW0 #1
